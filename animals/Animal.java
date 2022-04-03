@@ -1,7 +1,5 @@
 package animals;
-import diet.Carnivore;
 import diet.IDiet;
-import diet.Omnivore;
 import food.EFoodType;
 import food.IEdible;
 import mobility.Mobile;
@@ -12,16 +10,32 @@ public abstract class Animal extends Mobile implements IEdible {
     private String name;
     private double weight;
     private IDiet diet;
-
     public Animal(String name, Point point)
     {
         super(point);
         this.name = name;
     }
-
     public void SetName(String name)
     {
         this.name=name;
+    }
+    public String GetName()
+    {
+        return this.name;
+    }
+    public EFoodType getFoodtype()
+    {
+        MessageUtility.logGetter(GetName(), "getFoodtype", EFoodType.MEAT);
+        return EFoodType.MEAT;
+    }
+    public boolean SetDiet(IDiet diet)
+    {
+        MessageUtility.logSetter(name, "SetDiet", diet, true);
+        return true;
+    }
+    public double getWeight() {
+        MessageUtility.logGetter(this.getClass().getSimpleName(), "getWeight", this.weight);
+        return weight;
     }
     public boolean SetWeight(double weight)
     {
@@ -34,27 +48,31 @@ public abstract class Animal extends Mobile implements IEdible {
         {
             this.weight = 0;
         }
-        MessageUtility.logSetter(this.getClass().getSimpleName(), "setHeight", weight, isSuccess);
+        MessageUtility.logSetter(this.getClass().getSimpleName(), "setWeight", weight, isSuccess);
         return isSuccess;
     }
-    public void SetDiet(IDiet diet)
-    {
-        this.diet=diet;
-    }
+    public abstract void makeSound();
 
-
-    public String GetName()
+    public boolean eat(IEdible food)
     {
-        return this.name;
-    }
-    public double getWeight() {
-        MessageUtility.logGetter(this.getClass().getSimpleName(), "getWeight", this.weight);
-        return weight;
+        double new_weight = this.getWeight() + this.GetDiet().eat(this, food);
+        boolean isSuccess = (this.GetDiet().canEat(food.getFoodType()));
+        if ((new_weight > this.getWeight()) && isSuccess)
+        {
+            this.SetWeight(new_weight);
+            this.makeSound(); //after eating, each animal needs makes her own voice.
+        }
+        MessageUtility.logBooleanFunction(GetName(),"eat",food, isSuccess);
+        return isSuccess;
     }
     public IDiet GetDiet() {
         return diet;
     }
 
-    public abstract EFoodType getFoodtype();
-    public abstract void eat(IEdible iEdible);
+    public String toString() {
+        return "[" + this.getClass().getSimpleName() + "]: "+this.name;
+    }
+
+
+
 }
