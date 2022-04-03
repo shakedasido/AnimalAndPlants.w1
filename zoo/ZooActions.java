@@ -1,11 +1,14 @@
 package zoo;
 
 import java.util.Random;
+import java.util.Scanner;
 
 import animals.*;
 import food.IEdible;
 import mobility.Point;
 import utilities.MessageUtility;
+
+import static mobility.Point.CheckBoundaries;
 
 public class ZooActions {
     public static boolean eat(Object animal, IEdible food){
@@ -56,6 +59,47 @@ public class ZooActions {
 
     public static void main(String[] args)
     {
+        System.out.print("enter size of array, Please: ");
+        Scanner sc= new Scanner(System.in);
+        int size = sc.nextInt();
+        Animal[] AnimalArray= new Animal[size];
+        int count = 0, number=0;
+
+        while(count < size)
+        {
+            System.out.println("\nEnter number in order to choose the kind of animals:" +
+                    "\n Enter 1- For Lion" +
+                    "\n Enter 2- For Bear" +
+                    "\n Enter 3- For Elephant" +
+                    "\n Enter 4- For Giraffe" +
+                    "\n Enter 4- For Turtle\n");
+            number = sc.nextInt();
+            switch (number)
+            {
+                case 1:
+                    System.out.println("\nEnter Lion name\n");
+                    String name= sc.nextLine();
+                    System.out.println("Enter location:(x, y)\n");
+                    System.out.println("Enter x: ");
+                    int x = sc.nextInt();
+                    System.out.println("\nEnter y: ");
+                    int y = sc.nextInt();
+                    Point p = new Point(x, y);
+                    if (Point.CheckBoundaries(p))
+                    {
+                        AnimalArray[count] = new Lion(name, p);
+                    }
+                    else
+                    {
+                        AnimalArray[count] = new Lion(name);
+                    }
+                    count++;
+
+            }
+
+        }
+
+        return array;
 
 
     }

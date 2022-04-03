@@ -9,7 +9,8 @@ import utilities.MessageUtility;
 public class Lion extends RoarAnimals
 {
     private int scarCount;
-    public Lion(String name) {
+    public Lion(String name)
+    {
         super(name, new Point(20,0));
         this.SetDiet(new Carnivore());
         this.SetWeight(408.2);

@@ -10,6 +10,7 @@ public abstract class Animal extends Mobile implements IEdible {
     private String name;
     private double weight;
     private IDiet diet;
+
     public Animal(String name, Point point)
     {
         super(point);
