@@ -6,6 +6,14 @@ import mobility.Mobile;
 import mobility.Point;
 import utilities.MessageUtility;
 
+/**
+ * An easy interface to read numbers and strings from
+ * standard input
+ *
+ * @version 1.10 10 Mar 1997
+ * @author  Cay Horstmann
+ * @see     BasicIO
+ */
 public abstract class Animal extends Mobile implements IEdible {
     private String name;
     private double weight;
