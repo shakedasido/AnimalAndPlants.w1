@@ -21,7 +21,7 @@ public class Giraffe extends ChewAnimals{
 
     public Giraffe(String name, Point point)
     {
-        super(name, point); //here we actually create a point so we need to do new, create a new default value
+        super(name, point); //here we actually create a point, so we need to do new, create a new default value
         this.SetDiet(new Omnivore());
         this.SetWeight(450);
         neckLength = 1.5;

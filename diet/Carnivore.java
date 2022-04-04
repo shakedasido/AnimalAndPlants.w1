@@ -21,9 +21,7 @@ public class Carnivore implements IDiet
      */
     public boolean canEat(EFoodType food)
     {
-        if(food.equals(EFoodType.MEAT))
-            return true;
-        return false;
+        return food.equals(EFoodType.MEAT);
     }
     /**
      * Gets animal and food type.
@@ -39,7 +37,7 @@ public class Carnivore implements IDiet
      */
     public double eat(Animal animal, IEdible food)
     {
-        if(food.getFoodType().equals(EFoodType.MEAT))
+        if(canEat(food.getFoodType()))
             return animal.getWeight()*0.1;
         return 0;
     }

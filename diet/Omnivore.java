@@ -1,5 +1,5 @@
 package diet;
-import animals.Animal;
+import animals.*;
 import food.EFoodType;
 import food.IEdible;
 
@@ -11,8 +11,8 @@ import food.IEdible;
  * @see     IDiet
  */
 public class Omnivore implements IDiet {
-    private Carnivore c;
-    private Herbivore h;
+    private final Carnivore c;
+    private final Herbivore h;
     public Omnivore()
     {
         this.c=new Carnivore();
@@ -26,9 +26,7 @@ public class Omnivore implements IDiet {
      */
     public boolean canEat(EFoodType food)
     {
-        if(food.equals(EFoodType.NOTFOOD))
-            return false;
-        return true;
+        return !food.equals(EFoodType.NOTFOOD);
     }
     /**
      * Gets animal and food type.
@@ -44,7 +42,11 @@ public class Omnivore implements IDiet {
      */
     public double eat(Animal animal, IEdible food)
     {
-        return c.eat(animal, food)+h.eat(animal, food);//nopt sum only if MEAT
+        if(food.getFoodType().equals(EFoodType.MEAT))
+            return c.eat(animal, food);
+        else if (food.getFoodType().equals(EFoodType.VEGETABLE))
+                return h.eat(animal, food);
+        return 0;
     }
 
 

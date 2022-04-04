@@ -48,7 +48,7 @@ public class Bear extends RoarAnimals {
     public String getFurColor() {
         return furColor;
     }
-    @SuppressWarnings("unlikely-arg-type")
+
     public boolean setFurColor(String furColor) {
         for(FurColor color : FurColor.values()){
             if(color.equals(furColor.toUpperCase())){

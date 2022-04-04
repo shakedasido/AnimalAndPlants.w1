@@ -6,18 +6,20 @@ import mobility.Mobile;
 import mobility.Point;
 import utilities.MessageUtility;
 
+import java.lang.reflect.Type;
+
 /**
- * An easy interface to read numbers and strings from
- * standard input
+ * An abstract class that represent an animal, and have types of behaviors of animal in it.
  *
- * @version 1.10 10 Mar 1997
- * @author  Cay Horstmann
- * @see     BasicIO
+ * @version 03/04/2021
+ * @author  Shaked Asido, Hadar Levy.
+ * @see Lion
  */
 public abstract class Animal extends Mobile implements IEdible {
     private String name;
     private double weight;
     private IDiet diet;
+    //object from type interface refers to the classes that implement it.
 
     public Animal(String name, Point point)
     {
@@ -28,24 +30,31 @@ public abstract class Animal extends Mobile implements IEdible {
     {
         this.name=name;
     }
+
     public String GetName()
     {
+        MessageUtility.logGetter(this.name , "GetName", this.name);
         return this.name;
     }
-    public EFoodType getFoodtype()
+
+    public EFoodType getFoodType()
     {
-        MessageUtility.logGetter(GetName(), "getFoodtype", EFoodType.MEAT);
+        MessageUtility.logGetter(GetName(), "getFoodType", EFoodType.MEAT);
         return EFoodType.MEAT;
     }
-    public boolean SetDiet(IDiet diet)
-    {
-        MessageUtility.logSetter(name, "SetDiet", diet, true);
-        return true;
-    }
+
     public double getWeight() {
         MessageUtility.logGetter(this.getClass().getSimpleName(), "getWeight", this.weight);
         return weight;
     }
+
+    public boolean SetDiet(IDiet diet)
+    {
+        this.diet=diet;
+        MessageUtility.logSetter(name, "SetDiet", diet, true);
+        return true;
+    }
+
     public boolean SetWeight(double weight)
     {
         boolean isSuccess = (weight >= 0);
@@ -81,7 +90,5 @@ public abstract class Animal extends Mobile implements IEdible {
     public String toString() {
         return "[" + this.getClass().getSimpleName() + "]: "+this.name;
     }
-
-
 
 }

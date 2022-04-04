@@ -190,7 +190,7 @@ public class ZooActions {
             int rnd1 = random.nextInt(size);
             int rnd2 = random.nextInt(size);
             AnimalArray[rnd1].eat(AnimalArray[rnd2]);
-            if(AnimalArray[rnd1] instanceof Lion && AnimalArray[rnd1].eat(AnimalArray[rnd2])==true )
+            if(AnimalArray[rnd1] instanceof Lion && AnimalArray[rnd1].eat(AnimalArray[rnd2])==true)
             {
                 if(random.nextInt(2) == 1)
                     ((Lion)AnimalArray[rnd1]).SetScarCount(1);
