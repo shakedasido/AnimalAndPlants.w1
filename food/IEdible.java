@@ -8,4 +8,5 @@ package food;
  * @author  Shaked Asido, Hadar Levi.
  * @see     animals.Bear
  */
-public interface IEdible {public EFoodType getFoodType();}
+public interface IEdible {
+    EFoodType getFoodType();}

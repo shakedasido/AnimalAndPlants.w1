@@ -22,6 +22,7 @@ public class Herbivore implements IDiet
     {
         return food.equals(EFoodType.VEGETABLE);
     }
+
     /**
      * Gets animal and food type.
      * Check if it's the correct type of food that the animal eats.

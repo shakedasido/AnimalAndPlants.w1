@@ -1,7 +1,10 @@
 package diet;
 import animals.Animal;
+import animals.Lion;
 import food.EFoodType;
 import food.IEdible;
+
+import java.util.Random;
 
 
 /**
@@ -23,11 +26,13 @@ public class Carnivore implements IDiet
     {
         return food.equals(EFoodType.MEAT);
     }
+
     /**
      * Gets animal and food type.
      * Check if it's the correct type of food that the animal eats.
      * if yes, The animal eats, and it gains wight.
      * else, it doesn't gain any weight.
+     * Lions also have a 50% chance of getting scar after eating.
      * @param animal
      *        represent the type of meat eater animal.
      * @param food
@@ -37,8 +42,15 @@ public class Carnivore implements IDiet
      */
     public double eat(Animal animal, IEdible food)
     {
-        if(canEat(food.getFoodType()))
-            return animal.getWeight()*0.1;
+        if(canEat(food.getFoodType())) {
+            if (animal instanceof Lion) {
+                Random random = new Random();
+                //random starts from 1. gets only two options. 1 or 2, 50% for each one
+                if (random.nextInt(2) == 1)
+                    ((Lion) animal).SetScarCount(1);
+            }
+            return animal.getWeight() * 0.1;
+        }
         return 0;
     }
 

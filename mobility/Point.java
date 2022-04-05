@@ -1,6 +1,8 @@
 package mobility;
 
 import diet.IDiet;
+import food.EFoodType;
+import utilities.MessageUtility;
 
 /**
  * Defines a position on a two-dimensional axis.
@@ -24,13 +26,13 @@ public class Point
      * @param y
      *        represent the Y field
      *
-     * @return None
      */
     public Point(int x, int y)
     {
         this.x=x;
         this.y=y;
     }
+
     /**
      * Getter.
      * gets the attribute x.
@@ -38,8 +40,10 @@ public class Point
      */
     public int GetX()
     {
+        MessageUtility.logGetter(this.getClass().getSimpleName(), "GetX", this.x );
         return this.x;
     }
+
     /**
      * Getter.
      * gets the attribute y.
@@ -47,8 +51,10 @@ public class Point
      */
     public int GetY()
     {
+        MessageUtility.logGetter(this.getClass().getSimpleName(), "GetY", this.y );
         return this.y;
     }
+
     /**
      * Gets animal and food type.
      * Check if it's the correct type of food that the animal eats.
@@ -61,29 +67,39 @@ public class Point
      */
     public static boolean CheckBoundaries(Point pointToCheck)
     {
-        if(pointToCheck.x>maxRangeX || pointToCheck.y>maxRangeY || pointToCheck.x<minRange || pointToCheck.y>minRange)
-            return false;
-        return true;
+        if(pointToCheck.x<=maxRangeX && pointToCheck.y<=maxRangeY && pointToCheck.x>=minRange && pointToCheck.y>=minRange)
+            return true;
+        return false;
+
     }
 
     /**
      * Setter.
      * sets the attribute x.
-     * @return None
      */
     public void SetX(int x)
     {
         this.x=x;
+        MessageUtility.logSetter(this.getClass().getSimpleName(),"SetX",this.x ,true) ;
     }
 
     /**
      * Setter.
      * sets the attribute y.
-     * @return None.
      */
     public void SetY(int y)
     {
         this.y=y;
+        MessageUtility.logSetter(this.getClass().getSimpleName(),"SetY",this.y ,true) ;
+    }
+
+    /**
+     * function for printing the point in format (x, y).
+     *
+     * @return the point in format (x, y).
+     */
+    public String toString() {
+        return "(" + this.x+", "+this.y + ")";
     }
 
 

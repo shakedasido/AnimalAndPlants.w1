@@ -13,11 +13,17 @@ import food.IEdible;
 public class Omnivore implements IDiet {
     private final Carnivore c;
     private final Herbivore h;
+
+    /**
+     * Constructor for the Omnivore kinds, meat and vegetables.
+     * It creates a carnivore and herbivore, and combine them together.
+     */
     public Omnivore()
     {
         this.c=new Carnivore();
         this.h=new Herbivore();
     }
+
     /**
      * Gets element named food. checks if its actually food
      * @param food
@@ -28,6 +34,7 @@ public class Omnivore implements IDiet {
     {
         return !food.equals(EFoodType.NOTFOOD);
     }
+
     /**
      * Gets animal and food type.
      * Check if it's the correct type of food that the animal eats.

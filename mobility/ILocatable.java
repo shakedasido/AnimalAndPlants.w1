@@ -8,6 +8,17 @@ package mobility;
  */
 public interface ILocatable
 {
+    /**
+     * Getter.
+     * Gets the attribute location.
+     * @return the value of the attribute location.
+     */
     public Point getLocation();
+
+    /**
+     * Setter.
+     * sets the attribute location, if the point is in the range.
+     * @return Boolean result.
+     */
     public boolean setLocation(Point point);
 }

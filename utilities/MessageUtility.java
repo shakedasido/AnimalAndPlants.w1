@@ -39,7 +39,7 @@ public class MessageUtility {
      *            - Name of the Animal
      */
     public static void logConstractor(String className, String name) {
-        String str = "[+]new " + className + "\tname: " + name;
+        String str = "[+]new " + className + "\t  name: " + name;
         System.out.println(str);
     }
 

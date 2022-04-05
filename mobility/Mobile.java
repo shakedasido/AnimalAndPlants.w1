@@ -25,6 +25,7 @@ public class Mobile implements ILocatable
         this.location = point;
         this.totalDistance=0;
     }
+
     /**
      * Getter.
      * Gets the attribute totalDistance
@@ -32,8 +33,10 @@ public class Mobile implements ILocatable
      */
     public double getTotalDistance()
     {
+        MessageUtility.logGetter(this.getClass().getSimpleName(), "getTotalDistance", this.totalDistance);
         return this.totalDistance;
     }
+
     /**
      * Getter.
      * Gets the attribute location.
@@ -44,10 +47,11 @@ public class Mobile implements ILocatable
         MessageUtility.logGetter(this.getClass().getSimpleName(), "getLocation", this.location);
         return this.location;
     }
+
     /**
      * Setter.
      * sets the attribute location, if the point is in the range.
-     * @return None
+     * @return Boolean result
      */
     public boolean setLocation(Point newLocation)
     {
@@ -57,12 +61,12 @@ public class Mobile implements ILocatable
         }
         return isSuccess;
     }
+
     /**
      * Gets distance and add it to the total distance.
      * @param distance
      *        represent a distance as string.
      *
-     * @return None
      */
     public void addTotalDistance(double distance)
     {
@@ -80,6 +84,7 @@ public class Mobile implements ILocatable
     {
         return Math.sqrt((Math.pow((location.GetX()-p.GetX()),2)+(Math.pow((location.GetY()-p.GetY()),2))));
     }
+
     /**
      * Gets a location (point). if the location is in the allowed range,it updates the totalDistance with
      * the new distance that where added. and set the new location.
@@ -90,10 +95,13 @@ public class Mobile implements ILocatable
      */
     public double move(Point point)
     {
-        if(Point.CheckBoundaries(point)) {
+        if(Point.CheckBoundaries(point))
+        {
+
             addTotalDistance(calcDistance(point));
+            double distance=calcDistance(point);
             setLocation(point);
-            return calcDistance(point);
+            return distance;
         }
         return 0;
     }

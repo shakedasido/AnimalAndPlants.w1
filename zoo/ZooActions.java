@@ -8,6 +8,7 @@ import mobility.Point;
 import utilities.MessageUtility;
 
 public class ZooActions {
+
     public static boolean eat(Object animal, IEdible food){
 
         if (animal instanceof Lion)
@@ -54,28 +55,28 @@ public class ZooActions {
             size = sc.nextInt();
         }
         Animal[] AnimalArray= new Animal[size];
-        String name1="";
-        int x=0;
-        int y =0;
-        int number=0;
+        String name1= "";
+        int x=0, y =0, number=0;
         Point p;
         boolean done;
         for(int i=0;i<size;i++) {
             done=false;
-            while(done==false)
+            while(!done)
             {
-                System.out.println("\nEnter number in order to choose the kind of animals:" +
-                        "\n Enter 1- For Lion" +
-                        "\n Enter 2- For Bear" +
-                        "\n Enter 3- For Elephant" +
-                        "\n Enter 4- For Giraffe" +
-                        "\n Enter 5- For Turtle\n");
+                System.out.println("""
+
+                        Enter number in order to choose the kind of animals:
+                         Enter 1- For Lion
+                         Enter 2- For Bear
+                         Enter 3- For Elephant
+                         Enter 4- For Giraffe
+                         Enter 5- For Turtle
+                        """);
                 number = sc.nextInt();
-                switch (number)
-                {
-                    case 1:
+                switch (number) {
+                    case 1 -> {
                         System.out.println("Enter Lion name");
-                        name1= sc.next();
+                        name1 = sc.next();
                         sc.nextLine();
                         System.out.println("Enter location:(x, y)");
                         System.out.println("Enter x: ");
@@ -83,19 +84,20 @@ public class ZooActions {
                         System.out.println("Enter y: ");
                         y = sc.nextInt();
                         p = new Point(x, y);
-                        if (Point.CheckBoundaries(p))
-                        {
+                        if (Point.CheckBoundaries(p)) {
                             AnimalArray[i] = new Lion(name1, p);
-                        }
-                        else
-                        {
+                        } else {
                             AnimalArray[i] = new Lion(name1);
                         }
-                        done=true;
-                        break;
-                    case 2:
+                        if(AnimalArray[i] instanceof Lion)
+                        {
+                            ((Lion)AnimalArray[i]).GetScarCount();
+                        }
+                        done = true;
+                    }
+                    case 2 -> {
                         System.out.println("Enter Bear name");
-                        name1= sc.next();
+                        name1 = sc.next();
                         sc.nextLine();
                         System.out.println("Enter location:(x, y)");
                         System.out.println("Enter x: ");
@@ -103,19 +105,16 @@ public class ZooActions {
                         System.out.println("Enter y: ");
                         y = sc.nextInt();
                         p = new Point(x, y);
-                        if (Point.CheckBoundaries(p))
-                        {
+                        if (Point.CheckBoundaries(p)) {
                             AnimalArray[i] = new Bear(name1, p);
-                        }
-                        else
-                        {
+                        } else {
                             AnimalArray[i] = new Bear(name1);
                         }
-                        done=true;
-                        break;
-                    case 3:
+                        done = true;
+                    }
+                    case 3 -> {
                         System.out.println("Enter Elephant name");
-                        name1= sc.next();
+                        name1 = sc.next();
                         sc.nextLine();
                         System.out.println("Enter location:(x, y)");
                         System.out.println("Enter x: ");
@@ -123,19 +122,22 @@ public class ZooActions {
                         System.out.println("Enter y: ");
                         y = sc.nextInt();
                         p = new Point(x, y);
-                        if (Point.CheckBoundaries(p))
-                        {
+                        if (Point.CheckBoundaries(p)) {
                             AnimalArray[i] = new Elephant(name1, p);
-                        }
-                        else
-                        {
+                        } else {
                             AnimalArray[i] = new Elephant(name1);
                         }
-                        done=true;
-                        break;
-                    case 4:
+                        System.out.println("Enter the Elephant's trunk length: ");
+                        double length = sc.nextDouble();
+                        if(AnimalArray[i] instanceof Elephant)
+                        {
+                            ((Elephant)AnimalArray[i]).setTrunkLength(length);
+                        }
+                        done = true;
+                    }
+                    case 4 -> {
                         System.out.println("Enter Giraffe name");
-                        name1= sc.next();
+                        name1 = sc.next();
                         sc.nextLine();
                         System.out.println("Enter location:(x, y)");
                         System.out.println("Enter x: ");
@@ -143,19 +145,24 @@ public class ZooActions {
                         System.out.println("Enter y: ");
                         y = sc.nextInt();
                         p = new Point(x, y);
-                        if (Point.CheckBoundaries(p))
-                        {
+                        if (Point.CheckBoundaries(p)) {
                             AnimalArray[i] = new Giraffe(name1, p);
-                        }
-                        else
-                        {
+                        } else {
                             AnimalArray[i] = new Giraffe(name1);
                         }
-                        done=true;
-                        break;
-                    case 5:
+                        double length;
+                        System.out.println("Enter the Giraffe's neck length: ");
+                        length = sc.nextDouble();
+                        if(AnimalArray[i] instanceof Giraffe)
+                        {
+                            ((Giraffe)AnimalArray[i]).setNeckLength(length);
+                        }
+
+                        done = true;
+                    }
+                    case 5 -> {
                         System.out.println("Enter Turtle name");
-                        name1= sc.next();
+                        name1 = sc.next();
                         sc.nextLine();
                         System.out.println("Enter location:(x, y)");
                         System.out.println("Enter x: ");
@@ -163,19 +170,20 @@ public class ZooActions {
                         System.out.println("Enter y: ");
                         y = sc.nextInt();
                         p = new Point(x, y);
-                        if (Point.CheckBoundaries(p))
-                        {
+                        if (Point.CheckBoundaries(p)) {
                             AnimalArray[i] = new Turtle(name1, p);
-                        }
-                        else
-                        {
+                        } else {
                             AnimalArray[i] = new Turtle(name1);
                         }
-                        done=true;
-                        break;
-                    default:
-                        System.out.println("wrong choice! press again\n");
-
+                        System.out.println("Enter the Turtle's trunk length: ");
+                        int age = sc.nextInt();
+                        if(AnimalArray[i] instanceof Turtle)
+                        {
+                            ((Turtle)AnimalArray[i]).setAge(age);
+                        }
+                        done = true;
+                    }
+                    default -> System.out.println("wrong choice! press again\n");
                 }
 
             }
@@ -189,18 +197,12 @@ public class ZooActions {
             Random random = new Random();
             int rnd1 = random.nextInt(size);
             int rnd2 = random.nextInt(size);
-            AnimalArray[rnd1].eat(AnimalArray[rnd2]);
-            if(AnimalArray[rnd1] instanceof Lion && AnimalArray[rnd1].eat(AnimalArray[rnd2])==true)
-            {
-                if(random.nextInt(2) == 1)
-                    ((Lion)AnimalArray[rnd1]).SetScarCount(1);
-
-            }
+            eat(AnimalArray[rnd1], AnimalArray[rnd2]);
         }
         System.out.println("************************************************************");
         System.out.println("                           MOVE                             ");
         System.out.println("************************************************************");
-        Point temp=null;
+        Point temp;
         for(int i=0;i<size;i++)
         {
             System.out.println("Enter location you want "+AnimalArray[i].toString()+" to move to:(x, y)");
