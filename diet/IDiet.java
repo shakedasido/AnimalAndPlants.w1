@@ -18,7 +18,7 @@ public interface IDiet
      *        element from EFoodType enum to compare.
      * @return boolean result.
      */
-    public boolean canEat(EFoodType food);
+    boolean canEat(EFoodType food);
     /**
      * Gets animal and food type.
      * Check if it's the correct type of food that the animal eats.
@@ -31,5 +31,5 @@ public interface IDiet
      *
      * @return The gain that the animal added to its weight as double.
      */
-    public double eat(Animal animal, IEdible food);
+    double eat(Animal animal, IEdible food);
 }

@@ -18,7 +18,6 @@ public class Mobile implements ILocatable
      * Constructor that gets a point. initialize location and totalDistance fields.
      * @param point
      *        represent the location.
-     * @return None
      */
     public Mobile(Point point)
     {

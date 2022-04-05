@@ -1,9 +1,6 @@
 package animals;
 
 import diet.Herbivore;
-import diet.Omnivore;
-import food.EFoodType;
-import food.IEdible;
 import mobility.Point;
 import utilities.MessageUtility;
 
@@ -25,7 +22,8 @@ public class Giraffe extends ChewAnimals{
      */
     public Giraffe(String name)
     {
-        super(name, new Point(50, 0)); //here we actually create a point so we need to do new, create a new default value
+        //here we create a new point, so we use new, in order to create a new default value.
+        super(name, new Point(50, 0));
         this.SetDiet(new Herbivore());
         this.SetWeight(450);
         neckLength = 1.5;

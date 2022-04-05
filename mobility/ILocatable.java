@@ -13,12 +13,12 @@ public interface ILocatable
      * Gets the attribute location.
      * @return the value of the attribute location.
      */
-    public Point getLocation();
+    Point getLocation();
 
     /**
      * Setter.
      * sets the attribute location, if the point is in the range.
      * @return Boolean result.
      */
-    public boolean setLocation(Point point);
+    boolean setLocation(Point point);
 }

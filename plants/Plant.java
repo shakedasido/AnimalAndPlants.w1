@@ -49,7 +49,7 @@ public abstract class Plant implements IEdible, ILocatable {
     }
 
     /**
-     * @return
+     * @return this.height
      */
     public double getHeight() {
         MessageUtility.logGetter(this.getClass().getSimpleName(), "getHeight", this.height);
@@ -68,7 +68,7 @@ public abstract class Plant implements IEdible, ILocatable {
     }
 
     /**
-     * @return
+     * @return weight
      */
     public double getWeight() {
         MessageUtility.logGetter(this.getClass().getSimpleName(), "getWeight", this.weight);
@@ -77,7 +77,8 @@ public abstract class Plant implements IEdible, ILocatable {
 
     /**
      * @param height
-     * @return
+     *  sfa
+     * @return Boolean
      */
     public boolean setHeight(double height) {
 
@@ -108,7 +109,8 @@ public abstract class Plant implements IEdible, ILocatable {
 
     /**
      * @param weight
-     * @return
+     * fs
+     * @return Boolean
      */
     public boolean setWeight(double weight) {
         boolean isSuccess = (weight >= 0);

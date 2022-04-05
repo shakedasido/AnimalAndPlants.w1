@@ -6,8 +6,6 @@ import mobility.Mobile;
 import mobility.Point;
 import utilities.MessageUtility;
 
-import java.util.Random;
-
 
 /**
  * Abstract class that defines the common features for all animals The class expands Mobile and implements IEdible.

@@ -8,4 +8,4 @@ package food;
  * @author  Shaked Asido, Hadar Levi.
  * @see     animals.Animal
  */
-public enum EFoodType {MEAT,NOTFOOD,VEGETABLE};
+public enum EFoodType {MEAT,NOTFOOD,VEGETABLE}

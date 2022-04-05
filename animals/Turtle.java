@@ -1,8 +1,5 @@
 package animals;
 import diet.Herbivore;
-import diet.Omnivore;
-import food.EFoodType;
-import food.IEdible;
 import mobility.Point;
 import utilities.MessageUtility;
 
@@ -23,7 +20,7 @@ public class Turtle extends ChewAnimals {
      */
     public Turtle(String name)
     {
-        super(name, new Point(80, 0)); //here we actually create a point so we need to do new, create a new default value
+        super(name, new Point(80, 0));
         this.SetDiet(new Herbivore());
         this.SetWeight(1);
         age = 1;
@@ -40,7 +37,7 @@ public class Turtle extends ChewAnimals {
      */
     public Turtle(String name, Point point)
     {
-        super(name, point); //here we actually create a point so we need to do new, create a new default value
+        super(name, point);
         this.SetDiet(new Herbivore());
         this.SetWeight(1);
         age = 1;

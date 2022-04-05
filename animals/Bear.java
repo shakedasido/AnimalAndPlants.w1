@@ -1,8 +1,5 @@
 package animals;
 import diet.Omnivore;
-import food.EFoodType;
-import food.IEdible;
-import mobility.ILocatable;
 import mobility.Point;
 import utilities.MessageUtility;
 
@@ -25,7 +22,8 @@ public class Bear extends RoarAnimals {
      */
     public Bear(String name)
     {
-        super(name, new Point(100, 5)); //here we actually create a point so we need to do new, create a new default value
+        //here we create a new point, so we use new, in order to create a new default value.
+        super(name, new Point(100, 5));
         this.SetDiet(new Omnivore());
         this.SetWeight(308.2);
         furColor = "GREY";
@@ -41,7 +39,7 @@ public class Bear extends RoarAnimals {
      */
     public Bear(String name, Point point)
     {
-        super(name, point); //here we actually create a point so we need to do new, create a new default value
+        super(name, point); //here we send the value of the point to the father's constructor.
         this.SetDiet(new Omnivore());
         this.SetWeight(308.2);
         furColor = "GREY";
@@ -51,8 +49,8 @@ public class Bear extends RoarAnimals {
 
     /**
      * Constructor for the bear's name. It creates a specific bear, his location, and his color.
-     * @param name
-     *        represent the bear's name.
+     * @param  name
+     *        represent the bear's name, as string.
      * @param point
      *        represent a point from Point class.
      * @param furColor
@@ -91,7 +89,7 @@ public class Bear extends RoarAnimals {
      */
     public boolean setFurColor(String furColor) {
         for(FurColor color : FurColor.values()){
-            if(color.equals(furColor.toUpperCase()))
+            if(color.toString().equals(furColor.toUpperCase()))
             {
                 this.furColor = furColor;
                 MessageUtility.logSetter(this.GetName(), "setFurColor", furColor, true);

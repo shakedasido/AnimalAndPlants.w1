@@ -1,7 +1,4 @@
 package mobility;
-
-import diet.IDiet;
-import food.EFoodType;
 import utilities.MessageUtility;
 
 /**
@@ -67,10 +64,7 @@ public class Point
      */
     public static boolean CheckBoundaries(Point pointToCheck)
     {
-        if(pointToCheck.x<=maxRangeX && pointToCheck.y<=maxRangeY && pointToCheck.x>=minRange && pointToCheck.y>=minRange)
-            return true;
-        return false;
-
+        return (pointToCheck.x <= maxRangeX && pointToCheck.y <= maxRangeY && pointToCheck.x >= minRange && pointToCheck.y >= minRange);
     }
 
     /**

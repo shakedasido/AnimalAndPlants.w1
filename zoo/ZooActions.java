@@ -9,6 +9,17 @@ import utilities.MessageUtility;
 
 public class ZooActions {
 
+
+    /**
+     * Gets animal and an interface object that represent kinds of food eaters.
+     * Check by down-casting, if it's the correct type of animal. then operate the right type of animal's eat method.
+     * if yes, The animal is correct and send to eat. else, not.
+     * @param animal
+     *        represent an animal type (Lion, Bear, ...).
+     * @param food
+     *        represent the food of an animal type (carnivore, herbivore, omnivore).
+     * @return Boolean result.
+     */
     public static boolean eat(Object animal, IEdible food){
 
         if (animal instanceof Lion)
@@ -34,16 +45,39 @@ public class ZooActions {
         return false;
 
     }
+
+    /**
+     * Gets animal and a Point object that represent a location that thw animal wants to move to.
+     * Check by down-casting,
+     * if it's the correct type of animal(meaning, its one of the animals that we have in the program).
+     * if yes, it operates the move method of the animals, from Mobile class.
+     * @param animal
+     *        represent an animal type (Lion, Bear, ...).
+     * @param point
+     *        represent the animal's current location.
+     * @return Boolean result.
+     */
     public static boolean move(Object animal, Point point)
     {
         boolean isSuccess=false;
         if (animal instanceof Animal)
         {
-            isSuccess = ((((Animal) animal).move(point)) != 0);
+            isSuccess = ((((Animal) animal).move(point)) != 0); //return true, if not 0.
         }
         MessageUtility.logBooleanFunction(((Animal) animal).GetName(), "move", point, isSuccess);
         return isSuccess;
     }
+
+    /**
+     * Creates array, that will contain size amount of animals, as much as the user chose.
+     * the user will choose the animal, and the animal will be created by his wishes, as long as its one of the animals
+     * that are in the list. then we make a lottery out of all the animals at the array and randomly pick two.
+     * One of the animals will be eating the other animal.
+     * The animals in the list can also move, according to the point location that the user provide to the system.
+     * (as long as the point is in the correct limits).
+     * @param args
+     *      main method object from type String[].
+     */
     public static void main(String[] args)
     {
         System.out.print("Enter size of array, Please (minimum 3):");
@@ -55,8 +89,8 @@ public class ZooActions {
             size = sc.nextInt();
         }
         Animal[] AnimalArray= new Animal[size];
-        String name1= "";
-        int x=0, y =0, number=0;
+        String name1;
+        int x, y, number;
         Point p;
         boolean done;
         for(int i=0;i<size;i++) {
