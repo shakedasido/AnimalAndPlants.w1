@@ -46,7 +46,7 @@ public class Carnivore implements IDiet
             if (animal instanceof Lion) {
                 Random random = new Random();
                 //random starts from 1. gets only two options. 1 or 2, 50% for each one
-                if (random.nextInt(2) == 1)
+                if ((random.nextInt(2)+1) == 1)
                     ((Lion) animal).SetScarCount(1);
             }
             return animal.getWeight() * 0.1;

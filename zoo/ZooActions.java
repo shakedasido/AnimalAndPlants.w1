@@ -1,7 +1,7 @@
 package zoo;
 import java.util.Random;
 import java.util.Scanner;
-
+import java.util.*;
 import animals.*;
 import food.IEdible;
 import mobility.Point;
@@ -156,13 +156,17 @@ public class ZooActions {
                         System.out.println("Enter y: ");
                         y = sc.nextInt();
                         p = new Point(x, y);
+                        System.out.println("Enter the Elephant's trunk length (length >= 0.5 && length <= 3): ");
+                        double length = sc.nextDouble();
+
+                        //creates the animal
                         if (Point.CheckBoundaries(p)) {
                             AnimalArray[i] = new Elephant(name1, p);
                         } else {
                             AnimalArray[i] = new Elephant(name1);
                         }
-                        System.out.println("Enter the Elephant's trunk length: ");
-                        double length = sc.nextDouble();
+
+                        //creates the trunk
                         if(AnimalArray[i] instanceof Elephant)
                         {
                             ((Elephant)AnimalArray[i]).setTrunkLength(length);
@@ -179,14 +183,16 @@ public class ZooActions {
                         System.out.println("Enter y: ");
                         y = sc.nextInt();
                         p = new Point(x, y);
+                        System.out.println("Enter the Giraffe's neck length (length>=1 && length<=2.5): ");
+                        double length = sc.nextDouble();
+
+                        //creates the animal
                         if (Point.CheckBoundaries(p)) {
                             AnimalArray[i] = new Giraffe(name1, p);
                         } else {
                             AnimalArray[i] = new Giraffe(name1);
                         }
-                        double length;
-                        System.out.println("Enter the Giraffe's neck length: ");
-                        length = sc.nextDouble();
+                        //creates the giraffe's neck length
                         if(AnimalArray[i] instanceof Giraffe)
                         {
                             ((Giraffe)AnimalArray[i]).setNeckLength(length);
@@ -204,13 +210,17 @@ public class ZooActions {
                         System.out.println("Enter y: ");
                         y = sc.nextInt();
                         p = new Point(x, y);
+                        System.out.println("Enter the Turtle's age (age>=0 && age<=500): ");
+                        int age = sc.nextInt();
+
+                        //creates the animal
                         if (Point.CheckBoundaries(p)) {
                             AnimalArray[i] = new Turtle(name1, p);
                         } else {
                             AnimalArray[i] = new Turtle(name1);
                         }
-                        System.out.println("Enter the Turtle's trunk length: ");
-                        int age = sc.nextInt();
+
+                        //creates the turtle's age
                         if(AnimalArray[i] instanceof Turtle)
                         {
                             ((Turtle)AnimalArray[i]).setAge(age);
@@ -223,6 +233,7 @@ public class ZooActions {
             }
 
         }
+        boolean a_one_ate_a_two;
         System.out.println("************************************************************");
         System.out.println("                           FEED                             ");
         System.out.println("************************************************************");
@@ -230,8 +241,17 @@ public class ZooActions {
         {
             Random random = new Random();
             int rnd1 = random.nextInt(size);
-            int rnd2 = random.nextInt(size);
-            eat(AnimalArray[rnd1], AnimalArray[rnd2]);
+            int rnd2;
+            do {
+                rnd2 = random.nextInt(size);
+            }while (rnd1 == rnd2);
+
+            a_one_ate_a_two= eat(AnimalArray[rnd1], AnimalArray[rnd2]);
+            if (a_one_ate_a_two)
+            {
+                //animal 1 ate animal 2
+                AnimalArray[rnd2]=null;
+            }
         }
         System.out.println("************************************************************");
         System.out.println("                           MOVE                             ");
@@ -239,15 +259,18 @@ public class ZooActions {
         Point temp;
         for(int i=0;i<size;i++)
         {
-            System.out.println("Enter location you want "+AnimalArray[i].toString()+" to move to:(x, y)");
-            System.out.println("Enter x: ");
-            x = sc.nextInt();
-            System.out.println("Enter y: ");
-            y = sc.nextInt();
-            temp=new Point(x,y);
-            move(AnimalArray[i],temp);
+            if (AnimalArray[i] != null)
+            {
+                System.out.println("Enter location you want "+AnimalArray[i].toString()+" to move to:(x, y)");
+                System.out.println("Enter x: ");
+                x = sc.nextInt();
+                System.out.println("Enter y: ");
+                y = sc.nextInt();
+                temp=new Point(x,y);
+                move(AnimalArray[i], temp);
+            }
         }
-
+        sc.close();
     }
 
 }
